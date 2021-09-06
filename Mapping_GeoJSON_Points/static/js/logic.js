@@ -3,7 +3,8 @@ console.log("working");
 
 
 // Create the map object with center at the San Francisco airport.
-let map = L.map('mapid').setView([37.5, -122.5], 10);
+// Create the map object with center and zoom level.
+let map = L.map('mapid').setView([30, 30], 2);
 //OR
 // let map = L.map("mapid", {center:[40.7,-94.5],zoom:4});
 
@@ -50,3 +51,5 @@ let streets = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10/tile
 });
 // Then we add our 'graymap' tile layer to the map.
 streets.addTo(map);
+
+

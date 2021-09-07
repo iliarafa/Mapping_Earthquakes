@@ -29,32 +29,34 @@ let baseMaps = {
 let map = L.map('mapid', {
   center: [43.7, -79.3],
   zoom: 11,
-  layers: [satelliteStreets]
+  layers: [streets]
 })
+
+let myStyle = {
+  
+  color: "blue",
+  weight: 1,
+  
+}
 
 // Pass our map layers into our layers control and add the layers control to the map.
 L.control.layers(baseMaps).addTo(map);
 
-// Then we add our 'graymap' tile layer to the map.
-//streets.addTo(map);
-
-// Accessing the airport GeoJSON URL
-//let airportData = "https://raw.githubusercontent.com/iliarafa/Mapping_Earthquakes/main/majorAirports.json"
-
-// Accessing the Toronto airline routes GeoJSON URL.
-//let torontoData = "https://raw.githubusercontent.com/iliarafa/Mapping_Earthquakes/Mapping_GeoJSON_Linestrings/torontoRoutes.json";
-// Accessing the Toronto neighborhoods GeoJSON URL.
+//Accessing the Toronto neighborhoods GeoJSON URL.
 let torontoHoods = "https://raw.githubusercontent.com/iliarafa/Mapping_Earthquakes/Mapping_GeoJSON_Polygons/torontoNeighborhoods.json";
-// Create a style for the lines.
-let myStyle = {
-  color: "#ffffa1",
-  weight: 2
-}
-// Grabbing our GeoJSON data.
+
+// Grabing GeoJSON da
+
 d3.json(torontoHoods).then(function(data) {
   console.log(data);
 // Creating a GeoJSON layer with the retrieved data.
-L.geoJson(data).addTo(map);
+L.geoJson(data, {
+  style: myStyle,
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup("<h3> Neighborhood: " + feature.properties.AREA_NAME + "</h3>");
+  }
+}).addTo(map);
 });
+
 
 

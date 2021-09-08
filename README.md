@@ -21,3 +21,5 @@ These layers are initially switched on but the user may disable them.
 
 <Three map styles are also available. Street, Satellite and Night maps provide the viewer with three background options. 
 
+## The tools
+This project is 82.0% JavaScript, 14.5% HTML and 3.5% CSS.

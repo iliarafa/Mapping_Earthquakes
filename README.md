@@ -9,8 +9,8 @@ The purpose of this project is to visually show the differences between the magn
 
 Displayed on the map are the following layers of data: 
 
-- All earthquakes data for the past 7 days
-- All major earthquakes data for the past 7 days. 
+- All earthquake data for the past 7 days
+- All major earthquake data for the past 7 days. 
 
 ### The Thin Yellow Line
 The thin yellow line is our final layer and displays the positions of tectonic plates. 

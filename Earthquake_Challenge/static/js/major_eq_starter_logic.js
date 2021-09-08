@@ -45,7 +45,7 @@ let allMajorEq = new L.LayerGroup();
 let overlays = {
   "Earthquakes": allEarthquakes, 
   "Tectonic Plates": allTectons, 
-  "Major Eq": allMajorEq};
+  "Major Earthquakes": allMajorEq};
 
 // Add a control to change which layers.
 L.control.layers(baseMaps, overlays).addTo(map);
@@ -67,19 +67,13 @@ d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geoj
   }
 
   // This function determines the color of the marker based on the magnitude of the earthquake.
-  function getColor(magnitude) {
-
-    if (magnitude >7.5) {
-      return "#6b0002"
+  
+ function getColor(magnitude) {
+    if (magnitude > 5) {
+      return "#ea2c2c";
     }
-    if (magnitude > 6.5) {
-      return "#660000"
-    }
-    if (magnitude > 5.5) {
-      return "#b30000";
-    }
-    if (magnitude > 4.5) {
-      return "#ff3333";
+    if (magnitude > 4) {
+      return "#ea822c";
     }
     if (magnitude > 3) {
       return "#ee9c00";
@@ -141,7 +135,7 @@ function styleInfo(feature) {
   return {
     opacity: 1,
     fillOpacity: 1,
-    fillColor: getColor(feature.properties.mag),
+    fillColor: getColorMaj(feature.properties.mag),
     color: "#000000",
     radius: getRadius(feature.properties.mag),
     stroke: true,
@@ -150,30 +144,18 @@ function styleInfo(feature) {
 }
 
 // 5. Change the color function to use three colors for the major earthquakes based on the magnitude of the earthquake.
-function getColor(magnitude) {
+function getColorMaj(magnitude) {
 
-  if (magnitude >7.5) {
-    return "#6b0002"
+  if (magnitude > 6) {
+    return "#ff0000"
   }
-  if (magnitude > 6.5) {
-    return "#660000"
+  if (magnitude >= 5) {
+    return "#cc0000"
   }
-  if (magnitude > 5.5) {
-    return "#b30000";
+  if (magnitude <= 4.9) {
+    return "#ea822c";
   }
-  if (magnitude > 4.5) {
-    return "#ff3333";
-  }
-  if (magnitude > 3) {
-    return "#ee9c00";
-  }
-  if (magnitude > 2) {
-    return "#eecc00";
-  }
-  if (magnitude > 1) {
-    return "#d4ee00";
-  }
-  return "#98ee00";
+  
 }
 
 // 6. Use the function that determines the radius of the earthquake marker based on its magnitude.
@@ -215,16 +197,14 @@ let legend = L.control({
 legend.onAdd = function() {
   let div = L.DomUtil.create("div", "info legend");
 
-  const magnitudes = [0, 1, 2, 3, 4, 5, 6, 7];
+  const magnitudes = [0, 1, 2, 3, 4, 5];
   const colors = [
     "#98ee00",
     "#d4ee00",
     "#eecc00",
     "#ee9c00",
     "#ea822c",
-    "#ea2c2c",
-    "#b30000",
-    "#660000"
+    "#ea2c2c"
 
   ];
 

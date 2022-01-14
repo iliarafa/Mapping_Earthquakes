@@ -18,7 +18,7 @@ The thin yellow line is our final layer and displays the positions of tectonic p
 
 The combination of all three filters display the intense seismic activity in the areas where those plates meet. 
 
-Layers switched on by default and the user may disable them. 
+Layers are switched on by default and the user may disable them. 
 
 Three map styles are also available. Street, Satellite and Night maps provide the viewer with three background options. 
 

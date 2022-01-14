@@ -20,7 +20,7 @@ The combination of all three filters display the intense seismic activity in the
 
 Layers are switched on by default and the user may disable them. 
 
-Three map styles are also available. Street, Satellite and Night maps provide the viewer with three background options. 
+Three map styles are available. Street, Satellite and Night maps provide the viewer with three background options. 
 
 ## The tools
 This project is 82.0% JavaScript, 14.5% HTML and 3.5% CSS.
